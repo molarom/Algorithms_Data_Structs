@@ -3,8 +3,26 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "sort.h"
+
 // Prototypes to allow for reordering.
 help();
+
+// Function pointers for sorting algorithms.
+typedef void (*sorter)(int []);
+
+sorter sort_algorithms[10] = {
+	&linear_sort,
+	&binary_sort,
+	&selection_sort,
+	&insertion_sort,
+	&shell_sort,
+	&quicksort_sort,
+	&merge_sort,
+	&bucket_sort,
+	&radix_sort,
+	&heap_sort
+};
 
 int main(int argc, char** argv)
 {
@@ -23,24 +41,38 @@ int main(int argc, char** argv)
 	} sort = LINEAR;
 
 	// Parse our cmdline args.
-	size_t optind = { 0 };
-	for (optind = 1; optind < argc && argv[optind][0] == '-'; optind++) {
-		switch (argv[optind][1]) {
-		case 'bi': sort = BINARY; break;
-		case 'bu': sort = BUCKET; break;
-		case 'h': sort = HEAP; break;
-		case 'help': help(); break;
-		case 'i': sort = INSERTION; break;
-		case 'l': sort = LINEAR; break;
-		case 'm': sort = MERGE; break;
-		case 'q': sort = QUICKSORT; break;
-		case 'r': sort = RADIX; break;
-		case 'se': sort = SELECTION; break;
-		case 'sh': sort = SHELL; break;
-		default:
-			help();
-		}
+	size_t optind = 1;
+	if (argc < 2) {
+		help();
 	}
+
+	if (strcmp(argv[optind], "-bi") == 0) { 
+		sort = BINARY;
+		printf("%s", argv[optind]);
+	} else if (strcmp(argv[optind], "-bu") == 0) { 
+		sort = BUCKET; 
+	} else if (strcmp(argv[optind], "-h") == 0) {
+		sort = HEAP; 
+	} else if (strcmp(argv[optind], "-i") == 0) { 
+		sort = INSERTION; 
+	} else if (strcmp(argv[optind], "-l") == 0) {
+		sort = LINEAR; 
+	} else if (strcmp(argv[optind], "-m") == 0) { 
+		sort = MERGE; 
+	} else if (strcmp(argv[optind], "-q") == 0) { 
+		sort = QUICKSORT; 
+	} else if (strcmp(argv[optind], "-r") == 0) { 
+		sort = RADIX; 
+	} else if (strcmp(argv[optind], "-se") == 0) { 
+		sort = SELECTION; 
+	} else if (strcmp(argv[optind], "-sh") == 0) { 
+		sort = SHELL; 
+	} else if (strcmp(argv[optind], "-help") == 0) { 
+		help(); 
+	} else {
+		help();
+	}
+
 
 	return 0;
 }
