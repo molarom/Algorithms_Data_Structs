@@ -41,7 +41,8 @@ static int binary_search(int *a, int item, int low, int high)
 	if (low >= high)
 		return (item > a[low]) ? (low +1): low;
 
-	int mid = low + (high - 1) / 2;
+	// Fix to prevent overflow errors.
+	int mid = low + ((high - low) / 2);
 	if (a[mid] == item)
 		return mid + 1;
 	else if (a[mid] > item)
@@ -54,7 +55,7 @@ void binary_insertion_sort(int *a, int n)
 {
 	int i, loc, j, selected;
 
-	for (i = 1; i < n; ++i) {
+	for (i = 1; i < n; i++) {
 		j = i - 1;
 		selected = a[i];
 
