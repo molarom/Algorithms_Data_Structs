@@ -8,7 +8,7 @@ OBJECTS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SOURCES))
 EXECUTABLE := sorter
 
 CC := gcc
-CFLAGS := -Wall -Wextra -pedantic -Wno-missing-field-initializers
+CFLAGS := -g -Wall -Wextra -pedantic -Wno-missing-field-initializers
 
 .PHONY: all clean
 
