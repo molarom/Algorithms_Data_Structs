@@ -20,6 +20,6 @@ typedef struct {
 	char out_file[64];
 	char *argz;
 	size_t argz_len;
-} sorter_args;
+} sorter_args_t;
 
 #endif

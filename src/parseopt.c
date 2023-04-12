@@ -13,7 +13,6 @@ static struct argp_option options[] = {
 	{0,				 0, 0, 0, "Sorting Options:", 1},
 	{"binary",		'b', 0, 0, "Insertion sort aided by binary search."},
 	{"insertion",	'i', 0, 0, "Sorts data with a insertion algorithm."},
-	{"linear",		'l', 0, 0, "Sorts data with a linear algorithm."},
 	{"merge",		'm', 0, 0, "Sorts data with a merge algorithm."},
 	{"quicksort",	'q', 0, 0, "Sorts data with a quicksort algorithm."},
 	{"radix",		'r', 0, 0, "Sorts data with a radix algorithm."},
@@ -28,30 +27,37 @@ static struct argp_option options[] = {
 
 static int parse_opt(int key, char *arg, struct argp_state *state)
 {
-	sorter_args *a = state->input;
+	sorter_args_t *a = state->input;
 	switch (key) {
 	case 'b': 
 		a->sort = BINARY_SORT;
-		// TODO: Remove this.
-		printf("Selected Binary_sort\n");
 		break;
-	case 'i': a->sort = INSERTION_SORT; break;
-	case 'l': a->sort = LINEAR_SORT; break;
-	case 'm': a->sort = MERGE_SORT; break;
+	case 'i': 
+		a->sort = INSERTION_SORT;
+		printf("insertion sort\n");
+		break;
+	case 'l': 
+		a->sort = LINEAR_SORT;
+		break;
+	case 'm': 
+		a->sort = MERGE_SORT;
+		break;
 	case 'o': 
 		a->save_out = true; 
 		strncpy(a->out_file, arg, sizeof a->out_file);
-		// TODO: Remove this.
-		printf("Output file = %s\n", a->out_file);
 		break;
-	case 'q': a->sort = QUICKSORT; break;
-	case 'r': a->sort =	RADIX_SORT; break;
-	case 's': a->sort = SELECTION_SORT; break;
+	case 'q':
+		a->sort = QUICKSORT;
+		break;
+	case 'r':
+		a->sort = RADIX_SORT;
+		break;
+	case 's': 
+		a->sort = SELECTION_SORT;
+		break;
 	case 599:
 		a->read_file = true; 
 		strncpy(a->in_file, arg, sizeof a->in_file);
-		// TODO: Remove this.
-		printf("In file = %s\n", a->in_file);
 		break;
 	case ARGP_KEY_ARG:
 		argz_add(&a->argz, &a->argz_len, arg);

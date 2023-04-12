@@ -9,7 +9,8 @@
 #include "parseopt.h"
 
 sorter_t sort_method[7] = {
-	&binary_insertion_sort
+	&binary_insertion_sort,
+	&insertion_sort
 };
 
 long get_mem_usage() {
@@ -20,7 +21,7 @@ long get_mem_usage() {
 
 int main(int argc, char	**argv)
 {
-	sorter_args args;
+	sorter_args_t args;
 
 	if (argp_parse(&sorter_argp, argc, argv, 0, 0, &args) != 0) {
 		fprintf(stderr, "Unable to parse arguments.");

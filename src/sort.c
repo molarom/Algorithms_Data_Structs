@@ -27,7 +27,6 @@ int* str_to_int(char *str, size_t *arr_len)
 	while (token != NULL) {
 		++(*arr_len);
 		arr = realloc(arr, (*arr_len * sizeof (int*)));
-		//printf("token = %s arr_len = %zu\n", token, *arr_len);
 		arr[*arr_len - 1] = atoi(token);
 		token = strtok(NULL, ",");
 	}
@@ -66,5 +65,19 @@ void binary_insertion_sort(int *a, int n)
 			j--;
 		}
 		a[j + 1] = selected;
+	}
+}
+
+void insertion_sort(int *a, int n)
+{
+	int i, j, loc;
+	for(i = 1; i < n; i++) {
+		loc = a[i];
+		j = i - 1;
+		while (j >= 0 && a[j] > loc) {
+			a[j + 1] = a[j];
+			j--;
+		}
+		a[j + 1] = loc;
 	}
 }

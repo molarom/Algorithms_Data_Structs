@@ -6,10 +6,9 @@
 typedef void (*sorter_t)(int *arr, int arr_size);
 
 int* str_to_int(char *str, size_t *arr_len);
-void linear_sort ();
-void binary_sort ();
-void selection_sort();
 void binary_insertion_sort(int *a, int n);
+void insertion_sort(int *a, int n);
+void selection_sort();
 void shell_sort();
 void quicksort_sort();
 void merge_sort();
