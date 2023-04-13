@@ -10,7 +10,8 @@
 
 sorter_t sort_method[7] = {
 	&binary_insertion_sort,
-	&insertion_sort
+	&insertion_sort,
+	&merge_sort_wrapper
 };
 
 long get_mem_usage() {

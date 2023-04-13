@@ -8,7 +8,6 @@ typedef struct {
 	enum {	
 		BINARY_SORT, 
 		INSERTION_SORT, 
-		LINEAR_SORT,
 		MERGE_SORT,
 		QUICKSORT,
 		RADIX_SORT,

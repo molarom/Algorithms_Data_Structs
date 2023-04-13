@@ -36,9 +36,6 @@ static int parse_opt(int key, char *arg, struct argp_state *state)
 		a->sort = INSERTION_SORT;
 		printf("insertion sort\n");
 		break;
-	case 'l': 
-		a->sort = LINEAR_SORT;
-		break;
 	case 'm': 
 		a->sort = MERGE_SORT;
 		break;
