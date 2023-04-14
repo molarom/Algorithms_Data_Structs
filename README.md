@@ -35,6 +35,8 @@ Building has only been tested on Debian 12 (Kernel v6.1.0).
 make
 ```
 
+The final binary will be placed within the `build/` directory.
+
 # Limitations 
 
 Float comparisons have not been implemented yet.
