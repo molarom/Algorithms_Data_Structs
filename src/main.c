@@ -6,7 +6,7 @@
 #include <sys/resource.h>
 
 #include "sort.h"
-#include "parsing.h"
+#include "helpers.h"
 #include "parseopt.h"
 
 sorter_t sort_method[7] = {

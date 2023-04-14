@@ -5,7 +5,7 @@
 #include <ctype.h>
 #include <string.h>
 
-#include "parsing.h"
+#include "helpers.h"
 
 static void stripchr(char* restrict s, char c) {
 	int j, n = strlen(s);
