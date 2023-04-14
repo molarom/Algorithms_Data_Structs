@@ -44,8 +44,10 @@ int* file_to_int(char *f_open, size_t *arr_len)
 
     fp = fopen(f_open, "rb");
 
-    if (fp == NULL)
-        fprintf(stderr, "[%s:%d] Unable to read file: %s", __FILE__, __LINE__, f_open);
+    if (fp == NULL) {
+        fprintf(stderr, "[%s:%d] Unable to read file: %s\n", __FILE__, __LINE__, f_open);
+		exit(EXIT_FAILURE);
+	}	
 
     int str_len = 0;
     char* str = {0};
@@ -56,7 +58,7 @@ int* file_to_int(char *f_open, size_t *arr_len)
 
 	fseek(fp, 0, SEEK_SET);
 	if (!str) {
-        fprintf(stderr, "[%s:%d] Unable to allocate buffer: *str", __FILE__, __LINE__);
+        fprintf(stderr, "[%s:%d] Unable to allocate buffer: *str\n", __FILE__, __LINE__);
 	} else {
 		fread(str, 1, str_len, fp);
 	}

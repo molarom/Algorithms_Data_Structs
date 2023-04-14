@@ -99,5 +99,43 @@ static void merge_sort(int *a, int left, int right)
 
 void merge_sort_wrapper(int *a, int n)
 {
-	merge_sort(a, 0, n-1 );
+	merge_sort(a, 0, n - 1);
+}
+
+static void swap(int *a, int *b)
+{
+	int t = *a;
+	*b = t;
+}
+
+static int partition(int *a, int lo, int hi)
+{
+	int pivot = a[hi];
+
+	int i = (lo - 1);
+
+	for (int j = lo; j < hi; j++) {
+		if (a[j] <= pivot) {
+			i++;
+			swap(&a[i], &a[j]);
+		}
+	}
+	
+	swap(&a[i + 1], &a[hi]);
+
+	return(i + 1);
+}
+
+static void quick_sort(int *a, int lo, int hi)
+{
+	if (lo < hi) {
+		int pivot = partition(a, lo, hi);
+		quick_sort(a, lo, pivot - 1); 
+		quick_sort(a, pivot + 1, hi);
+	}
+}
+
+void quick_sort_wrapper(int *a, int n)
+{
+	quick_sort(a, 0, n - 1);
 }
