@@ -18,7 +18,7 @@ static struct argp_option options[] = {
 	{"radix",		'r', 0, 0, "Sorts data with a radix algorithm."},
 	{"selection",	's', 0, 0, "Sorts data with a selection algorithm."},
 	{0,				 0, 0, 0, "Input Options:", -9},
-	{"infile",		 599, "FILE", 0, "Read list from file. Must contain comma separated list with no spaces."},
+	{"infile",		 599, "FILE", 0, "Read list from file."},
 	{0,				 0, 0, 0, "Output Options:", -8},
 	{"output",		'o', "FILE", 0, "Write output to a file. (Default stdout)"},
 	{0,				 0, 0, 0, "Informational Options:", -1},
@@ -68,9 +68,9 @@ static int parse_opt(int key, char *arg, struct argp_state *state)
 		size_t count = argz_count(a->argz, a->argz_len);
 		if (count > 1)
 			argp_failure(state, 1, 0, "only one list of integers may be provided");
-		else if ((count == 1) && (a->save_out == true))
+		else if ((count == 1) && (a->read_file == true))
 			argp_failure(state, 1, 0, "can only read from file or from stdin, not both");
-		else if ((count < 1) && (a->save_out == false))
+		else if ((count < 1) && (a->read_file == false))
 			argp_failure(state, 1, 0, "a list of integers must be provided");
 		}
 		break;

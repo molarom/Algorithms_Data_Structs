@@ -1,39 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
 #include "sort.h"
-
-static void stripchr(char* restrict s, char c) {
-	int j, n = strlen(s);
-	for (int i = j = 0; i < n; i++) {
-		if (s[i] != c)
-		    s[j++] = s[i];
-	} 
-	s[j] = '\0';
-}
-
-// Int arr is malloc'd, caller's responsibility to free.
-int* str_to_int(char *str, size_t *arr_len) 
-{
-	// Remove any whitespace.
-	char *tmp_str = strdup(str);
-	stripchr(tmp_str, ' ');
-
-	// Set up for realloc.
-	int *arr = (int*) calloc(0, sizeof (int*));
-
-	char *token = strtok(tmp_str, ",");
-	while (token != NULL) {
-		++(*arr_len);
-		arr = realloc(arr, (*arr_len * sizeof (int*)));
-		arr[*arr_len - 1] = atoi(token);
-		token = strtok(NULL, ",");
-	}
-	
-	free(tmp_str);
-	return arr;
-}
 
 static int binary_search(int *a, int item, int low, int high)
 {

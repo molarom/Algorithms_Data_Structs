@@ -6,6 +6,7 @@
 #include <sys/resource.h>
 
 #include "sort.h"
+#include "parsing.h"
 #include "parseopt.h"
 
 sorter_t sort_method[7] = {
@@ -30,7 +31,12 @@ int main(int argc, char	**argv)
 	}
 
 	size_t int_len = 0;
-	int *int_arr = str_to_int(args.argz, &int_len);
+	int * int_arr;
+	if (args.read_file == false) {
+		int_arr = str_to_int(args.argz, &int_len);
+	} else {
+		int_arr = file_to_int(args.in_file, &int_len);
+	}
 
 	time_t begin, end;
 	time(&begin);
@@ -39,7 +45,6 @@ int main(int argc, char	**argv)
 
 	time(&end);
 	time_t elapsed = end - begin;
-
 
 	printf("Sorted array: \n");
 	for(size_t i = 0; i < int_len; i++)
