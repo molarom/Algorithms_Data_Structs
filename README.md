@@ -4,18 +4,35 @@ This is a simple program that will read in a comma separated list of numbers, an
 
 ## Usage
 
-This program makes use of the Argp library, so some standard command-line options are provided.
+```
+Usage: sorter [OPTION...] <list of integers>
+Sorts a comma separated list of integers using various sorting algorithms, logs
+time and memory usage over the lifecycle of the sort.
 
-Ex:
-```
-./sorter --usage
-./sorter --version
+ Sorting Options:
+  -b, --binary               Insertion sort aided by binary search.
+  -i, --insertion            Sorts data with a insertion algorithm.
+  -m, --merge                Sorts data with a merge algorithm.
+  -q, --quicksort            Sorts data with a quicksort algorithm.
+  -r, --radix                Sorts data with a radix algorithm.
+  -s, --selection            Sorts data with a selection algorithm.
+
+ Input Options:
+      --in-file=FILE         Read list from file.
+
+ Output Options:
+  -o, --out-file=FILE        Write output to a file. (Default stdout)
+
+ Informational Options:
+  -?, --help                 Give this help list
+      --usage                Give a short usage message
+  -V, --version              Print program version
+
+Mandatory or optional arguments to long options are also mandatory or optional
+for any corresponding short options.
 ```
 
-For a full list of options:
-```
-./sorter --help
-```
+**NOTE:** If you select multiple sort options, only the last sort method will be executed.
 
 ## Testing
 This repository ships with a Perl script to generate a file for testing purposes.
@@ -26,6 +43,11 @@ perl generate_list.pl
 ```
 
 This will generate 100,000 random integers from 1-100,000 within a file named `numbers.txt`.
+
+Pass this file to the binary to examine the outputs.
+```
+./sorter [OPTION..] --infile=numbers.txt
+```
 
 # Building
 

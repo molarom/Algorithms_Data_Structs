@@ -5,23 +5,23 @@
 
 #include "parseopt.h"
 
-const char *argp_program_version = "Sorter v0.1";
+const char *argp_program_version = "Sorter v0.3";
 static char doc[] = "Sorts a comma separated list of integers using various sorting algorithms, \
 logs time and memory usage over the lifecycle of the sort.";
 static char args_doc[] = "<list of integers>";
 static struct argp_option options[] = {
-	{0,				 0, 0, 0, "Sorting Options:", 1},
-	{"binary",		'b', 0, 0, "Insertion sort aided by binary search."},
-	{"insertion",	'i', 0, 0, "Sorts data with a insertion algorithm."},
-	{"merge",		'm', 0, 0, "Sorts data with a merge algorithm."},
-	{"quicksort",	'q', 0, 0, "Sorts data with a quicksort algorithm."},
-	{"radix",		'r', 0, 0, "Sorts data with a radix algorithm."},
-	{"selection",	's', 0, 0, "Sorts data with a selection algorithm."},
-	{0,				 0, 0, 0, "Input Options:", -9},
-	{"infile",		 599, "FILE", 0, "Read list from file."},
-	{0,				 0, 0, 0, "Output Options:", -8},
-	{"output",		'o', "FILE", 0, "Write output to a file. (Default stdout)"},
-	{0,				 0, 0, 0, "Informational Options:", -1},
+	{0,					0, 0, 0, "Sorting Options:", 1},
+	{"binary",			'b', 0, 0, "Insertion sort aided by binary search."},
+	{"insertion",		'i', 0, 0, "Sorts data with a insertion algorithm."},
+	{"merge",			'm', 0, 0, "Sorts data with a merge algorithm."},
+	{"quicksort",		'q', 0, 0, "Sorts data with a quicksort algorithm."},
+	{"radix",			'r', 0, 0, "Sorts data with a radix algorithm."},
+	{"selection",		's', 0, 0, "Sorts data with a selection algorithm."},
+	{0,					0, 0, 0, "Input Options:", -9},
+	{"in-file",			599, "FILE", 0, "Read list from file."},
+	{0,					0, 0, 0, "Output Options:", -8},
+	{"out-file",		'o', "FILE", 0, "Write output to a file. (Default stdout)"},
+	{0,					0, 0, 0, "Informational Options:", -1},
 	{0}
 };
 
