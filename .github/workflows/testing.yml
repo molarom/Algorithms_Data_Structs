@@ -1,8 +1,8 @@
 name: Release
 on:
   push:
-    tags:
-      - "**"
+    branch:
+      - "main"
 jobs:
   build_release:
     name: build_release
